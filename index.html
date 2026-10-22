@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Профпроба — генератор паролей</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="page">
+      <header class="page-header">
+        <p class="eyebrow">Профпроба · 09.02.07</p>
+        <h1>Собери генератор паролей</h1>
+        <p class="lead">Всего шесть строк Python. Готовый код уже перед тобой — допиши пропуски и проверь результат.</p>
+      </header>
+
+      <section class="workshop-window" aria-label="Учебная рабочая область">
+        <div class="window-top">
+          <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Разделы проекта">
+          <button class="tab active" id="tab-code" type="button" role="tab" aria-selected="true" aria-controls="panel-code">⌘ <span>Код</span></button>
+          <button class="tab" id="tab-preview" type="button" role="tab" aria-selected="false" aria-controls="panel-preview">◉ <span>Генератор</span> <span class="tab-lock" id="tab-lock">закрыт</span></button>
+        </div>
+
+        <section class="tab-panel" id="panel-code" role="tabpanel" aria-labelledby="tab-code">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">Редактор</p>
+              <h2>Дополни программу</h2>
+              <p>В длинных полях — строки Python, в коротких — числа длины. Отступы уже выставлены.</p>
+            </div>
+            <div class="progress-badge" id="progress-badge">0 / 6 строк</div>
+          </div>
+
+          <div class="editor-scroll">
+            <div class="code-editor" id="code-rows" role="group" aria-label="Код Python с шестью полями ввода"></div>
+          </div>
+
+          <div class="editor-actions">
+            <button class="primary-button" id="check-button" type="button" disabled>Проверить код</button>
+            <button class="quiet-button" id="reset-button" type="button">Очистить мои строки</button>
+            <button class="quiet-button hidden" id="retry-button" type="button">Повторить загрузку</button>
+          </div>
+          <p class="feedback" id="code-feedback" role="status" aria-live="polite">Заполни шесть строк и нажми «Проверить код».</p>
+        </section>
+
+        <section class="tab-panel hidden" id="panel-preview" role="tabpanel" aria-labelledby="tab-preview">
+          <div class="preview-locked" id="preview-locked">
+            <span class="lock-icon" aria-hidden="true">⌁</span>
+            <h2>Сначала проверь код</h2>
+            <p>Когда программа пройдёт проверку, здесь появится твой генератор паролей.</p>
+            <button class="secondary-button" id="back-to-code" type="button">Вернуться к коду</button>
+          </div>
+
+          <div class="generator hidden" id="generator-content">
+            <div class="panel-heading">
+              <div>
+                <p class="section-kicker">Твой результат</p>
+                <h2>Генератор паролей</h2>
+                <p>Меняй настройки и смотри, как работает написанная тобой программа.</p>
+              </div>
+            </div>
+
+            <div class="password-box">
+              <code id="password-value">Здесь появится пароль</code>
+              <button class="copy-button" id="copy-button" type="button" disabled>Скопировать</button>
+            </div>
+            <p class="copy-message" id="copy-message" role="status"></p>
+
+            <div class="controls">
+              <div class="length-heading">
+                <label for="password-length">Длина пароля</label>
+                <strong id="length-value">12</strong>
+              </div>
+              <input id="password-length" type="range" min="8" max="32" value="12">
+
+              <fieldset>
+                <legend>Какие символы использовать?</legend>
+                <label class="option"><input type="checkbox" value="lowercase"> Строчные буквы <span>a–z</span></label>
+                <label class="option"><input type="checkbox" value="uppercase"> Заглавные буквы <span>A–Z</span></label>
+                <label class="option"><input type="checkbox" value="digits"> Цифры <span>0–9</span></label>
+                <label class="option"><input type="checkbox" value="symbols"> Спецсимволы <span>! @ # …</span></label>
+              </fieldset>
+
+              <button class="primary-button generate-button" id="generate-button" type="button">Сгенерировать пароль</button>
+            </div>
+
+            <div class="strength-row">
+              <span>Надёжность</span>
+              <strong id="strength-value">Не определена</strong>
+            </div>
+          </div>
+        </section>
+      </section>
+
+    </main>
+    <script type="module" src="./app.mjs"></script>
+  </body>
+</html>
